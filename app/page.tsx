@@ -5,7 +5,7 @@ import { formatCents } from "@/lib/format";
 import CouncilNote from "@/components/CouncilNote";
 
 export default function Home() {
-  const lowest = Math.min(...TIERS.map((t) => t.priceCents));
+  const individual = TIERS.find((t) => t.id === "individual")!;
   return (
     <div className="narrow">
       <section className="hero">
@@ -17,7 +17,7 @@ export default function Home() {
       <div className="cards">
         <Link href="/join" className="card link-card">
           <h2>Become a member</h2>
-          <p>Annual memberships from {formatCents(lowest)}/yr.</p>
+          <p>Annual membership {formatCents(individual.priceCents)}/yr.</p>
           <span className="btn btn-primary">Join now</span>
         </Link>
         {DONATION_FUNDS.map((f) => (
